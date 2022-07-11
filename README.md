@@ -1,9 +1,9 @@
 # OldFashionPound
 A library (package OldFashionPound) implementing the 4 arithmetic operations (sum, subtraction, multiplication and division) for pre-1970 UK prices.
 
-Under the old money system of UK, before 1970, there were 12 pence in a shilling and 20 shillings, or 240 pence, in a pound. Thus, a price in th OldUK Money system was expressed in Pounds, Shillings and Pence.
+Under the old money system of UK, before 1970, there were 12 pence in a shilling and 20 shillings, or 240 pence, in a pound. Thus, a price in th OldUK Money system was expressed in Pound, Shillings and Pence.
 
-For example "12p 6s 10d" is 12 Pounds, 6 Shillings and 10 Pence.
+For example "12p 6s 10d" is 12 Pound, 6 Shillings and 10 Pence.
 
 
 Sum and Subtraction should add or subtract two prices respectively.
