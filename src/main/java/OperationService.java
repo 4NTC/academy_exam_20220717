@@ -4,13 +4,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class OperationService {
-
-  private Pound pound;
-  private Shilling shilling;
-  private Pence pence;
   private int remainder;
 
-  public Pence calculateTotalPence() {
+  public Pence calculateTotalPence(Pound pound, Shilling shilling, Pence pence) {
     Pence poundToPence = pound.convertToPence();
     Pence shillingToPence = shilling.convertToPence();
     return new Pence(poundToPence.getValue() + shillingToPence.getValue() + pence.getValue());
@@ -28,6 +24,20 @@ public class OperationService {
     remainder = pence;
 
     return new Pound(pound);
+  }
+
+  public Shilling penceToShilling(Pence value) {
+    int shilling = 0;
+    int pence = value.getValue();
+
+    while (pence >= 12) {
+      shilling++;
+      pence -= 12;
+    }
+
+    remainder = pence;
+
+    return new Shilling(shilling);
   }
 
 

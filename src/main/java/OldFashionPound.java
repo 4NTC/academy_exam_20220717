@@ -25,57 +25,57 @@ public class OldFashionPound {
       Pattern digitPattern = Pattern.compile(price);
       Matcher priceMatcher = digitPattern.matcher(firstPrice);
 
-      Pence totPenceFirstPrize = null;
+      int totPenceFirstPrize = 0;
+      int totPenceSecondPrize = 0;
 
       OperationService operationService = new OperationService();
 
       if (priceMatcher.matches()) {
-
-        System.out.println(priceMatcher.group());
-
-        Pound pound = new Pound(Integer.parseInt(priceMatcher.group(1)));
-        Shilling shilling = new Shilling(Integer.parseInt(priceMatcher.group(2)));
-        Pence pence = new Pence(Integer.parseInt(priceMatcher.group(3)));
-
-        operationService.setPound(pound);
-        operationService.setShilling(shilling);
-        operationService.setPence(pence);
-
-        totPenceFirstPrize = operationService.calculateTotalPence();
-        System.out.println(totPenceFirstPrize.getValue());
-
-
+        totPenceFirstPrize = calculateTotPence(priceMatcher, operationService);
       }
 
-      System.out.println(operationService.penceToPound(totPenceFirstPrize).getValue());
-      System.out.println(operationService.getRemainder());
+      System.out.println(totPenceFirstPrize);
 
       //Price 2
 
       priceMatcher = digitPattern.matcher(secondPrice);
 
       if (priceMatcher.matches()) {
-
-        System.out.println(priceMatcher.group());
-
-        Pound pound = new Pound(Integer.parseInt(priceMatcher.group(1)));
-        Shilling shilling = new Shilling(Integer.parseInt(priceMatcher.group(2)));
-        Pence pence = new Pence(Integer.parseInt(priceMatcher.group(3)));
-
-        operationService.setPound(pound);
-        operationService.setShilling(shilling);
-        operationService.setPence(pence);
-
-        Pence totPenceFirstPrize1 = operationService.calculateTotalPence();
-        System.out.println(totPenceFirstPrize1.getValue());
-
+        totPenceSecondPrize = calculateTotPence(priceMatcher, operationService);
       }
 
+      System.out.println(totPenceSecondPrize);
 
+      int totPencePrize = totPenceFirstPrize + totPenceSecondPrize;
+
+      System.out.println(totPencePrize);
+
+      Pence pence = new Pence(totPencePrize);
+
+      Pound pound = operationService.penceToPound(pence);
+      int remainder = operationService.getRemainder();
+      pence = new Pence(remainder);
+      Shilling shilling = operationService.penceToShilling(pence);
+      remainder = operationService.getRemainder();
+      System.out.println(remainder);
+      pence = new Pence(remainder);
+
+      System.out.printf("%sp %ss %sd\n", pound.getValue(), shilling.getValue(), pence.getValue());
 
     } else {
       System.out.println("Input not valid");
     }
+  }
+
+  public static int calculateTotPence(Matcher priceMatcher, OperationService operationService) {
+
+    Pound pound = new Pound(Integer.parseInt(priceMatcher.group(1)));
+    Shilling shilling = new Shilling(Integer.parseInt(priceMatcher.group(2)));
+    Pence pence = new Pence(Integer.parseInt(priceMatcher.group(3)));
+
+    Pence totPencePrize = operationService.calculateTotalPence(pound, shilling, pence);
+
+    return totPencePrize.getValue();
   }
 
 }
