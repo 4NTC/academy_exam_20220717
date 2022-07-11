@@ -15,7 +15,7 @@ public class Shilling {
     int pence = 0;
     int shillingsValue = value;
 
-    while (shillingsValue >= 0) {
+    while (shillingsValue > 0) {
       pence += 12;
       shillingsValue--;
     }

@@ -9,6 +9,18 @@ public class Pound {
 
   // Pound Shillings Pence
 
+  //5 p -> 1200 d
+  //17 s -> 204 d
+  //8 d
+  // = 1412 d
+
+  //3 p -> 720 d
+  //4 s -> 48 d
+  //10 d
+  // = 778
+
+  // tot -> 2190 d
+
   private final int value;
 
   public Pound(int value) {
@@ -19,7 +31,7 @@ public class Pound {
     int shillings = 0;
     int poundsValue = value;
 
-    while (poundsValue >= 0) {
+    while (poundsValue > 0) {
       shillings += 20;
       poundsValue--;
     }
@@ -31,7 +43,7 @@ public class Pound {
     int pence = 0;
     int poundsValue = value;
 
-    while (poundsValue >= 0) {
+    while (poundsValue > 0) {
       pence += 240;
       poundsValue--;
     }
