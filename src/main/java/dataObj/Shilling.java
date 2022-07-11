@@ -1,3 +1,6 @@
+package dataObj;
+
+import dataObj.Pence;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +16,11 @@ public class Shilling {
 
   public Pence convertToPence() {
     int pence = 0;
-    int shillingsValue = value;
+    int shillings = value;
 
-    while (shillingsValue > 0) {
+    while (shillings > 0) {
       pence += 12;
-      shillingsValue--;
+      shillings--;
     }
 
     return new Pence(pence);

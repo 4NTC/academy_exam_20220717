@@ -1,3 +1,8 @@
+package services;
+
+import dataObj.Pence;
+import dataObj.Pound;
+import dataObj.Shilling;
 import lombok.Getter;
 import lombok.Setter;
 

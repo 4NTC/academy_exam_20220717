@@ -1,13 +1,16 @@
+package dataObj;
+
+import dataObj.Pence;
 import lombok.Getter;
 
 @Getter
 public class Pound {
 
-  // 1 Shilling -> 12 Pence
-  // 1 Pound -> 20 Shillings
-  // 1 Pound -> 240 Pence
+  // 1 dataObj.Shilling -> 12 dataObj.Pence
+  // 1 dataObj.Pound -> 20 Shillings
+  // 1 dataObj.Pound -> 240 dataObj.Pence
 
-  // Pound Shillings Pence
+  // dataObj.Pound Shillings dataObj.Pence
 
   //5 p -> 1200 d
   //17 s -> 204 d
@@ -29,11 +32,11 @@ public class Pound {
 
   public Shilling convertToShilling() {
     int shillings = 0;
-    int poundsValue = value;
+    int pound = value;
 
-    while (poundsValue > 0) {
+    while (pound > 0) {
       shillings += 20;
-      poundsValue--;
+      pound--;
     }
 
     return new Shilling(shillings);
@@ -41,11 +44,11 @@ public class Pound {
 
   public Pence convertToPence() {
     int pence = 0;
-    int poundsValue = value;
+    int pound = value;
 
-    while (poundsValue > 0) {
+    while (pound > 0) {
       pence += 240;
-      poundsValue--;
+      pound--;
     }
 
     return new Pence(pence);
